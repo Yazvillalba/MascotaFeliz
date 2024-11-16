@@ -15,12 +15,13 @@ export class Cliente {
         this.esVip = false;
     }
 
-    public incrementarVisitas(): void {
-        this.numeroVisitas++;
-        if (this.numeroVisitas >= 5) {
-          this.esVip = true;
-        }
-      }
+    // Había hecho este método acá pero considero que es algo que tiene que manejarse desde veterinaria
+    // public incrementarVisitas(): void {
+    //     this.numeroVisitas++;
+    //     if (this.numeroVisitas >= 5) {
+    //       this.esVip = true;
+    //     }
+    //   }
 
     // GETTERS: 
 
