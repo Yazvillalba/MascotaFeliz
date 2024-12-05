@@ -54,4 +54,11 @@ export class Red {
             console.log("Proveedor no encontrado.");
         }
     }
+    public getVeterinariaByName(nombre: string): Veterinaria | undefined {
+        return this.veterinarias.find((veterinaria) => veterinaria.getNombre().toLowerCase() === nombre.toLowerCase());
+    }
+
+    public getProveedorByName(nombre: string): Proveedor | undefined {
+        return this.proveedores.find((proveedor) => proveedor.getNombre().toLowerCase() === nombre.toLowerCase());
+    }
 }

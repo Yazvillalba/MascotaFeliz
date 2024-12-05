@@ -127,5 +127,39 @@ export class Veterinaria {
             console.log(`Cliente con ID ${cliente.getId()} no encontrado.`);
         }
     }
-    
-}
+    public getClientes(): Cliente[] {
+        return this.clientes;
+    }
+    public getClienteById(clienteId: number): Cliente | null {
+        const cliente = this.clientes.find((c) => c.getId() === clienteId);
+        if (cliente) {
+            return cliente;
+        }
+        console.log(`Cliente con ID ${clienteId} no encontrado.`);
+        return null;
+    }
+    public getClienteByNameAndPhone(nombre: string, telefono: number): Cliente | null {
+        return this.clientes.find(cliente => 
+            cliente.getNombre().toLowerCase() === nombre.toLowerCase() && cliente.getTelefono() === telefono
+        ) ?? null; 
+    }
+    public getMascotaByNameAndCliente(nombreMascota: string, nombreDueno: string): Mascota | undefined {
+        return this.mascotas.find((mascota) => {
+            const clienteDueno = this.clientes.find(cliente => cliente.getId() === mascota.getIdCliente());
+            return clienteDueno && clienteDueno.getNombre().toLowerCase() === nombreDueno.toLowerCase()
+                && mascota.getNombre().toLowerCase() === nombreMascota.toLowerCase();
+        });
+    }
+    public getMascotaByCliente(nombreCliente: string, telefonoCliente: number): Mascota[] {
+        const cliente = this.clientes.find(c => c.getNombre().toLowerCase() === nombreCliente.toLowerCase() && c.getTelefono() === telefonoCliente);
+
+        if (cliente) {
+            const mascotasDelCliente = this.mascotas.filter(mascota => mascota.getIdCliente() === cliente.getId());
+            return mascotasDelCliente;
+        } else {
+            console.log("Cliente no encontrado.");
+            return [];
+        }
+    }
+
+} 

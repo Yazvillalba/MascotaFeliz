@@ -3,27 +3,17 @@ import { generarIdUnico } from "./globalID"
 export class Cliente {
     private id: number;
     private nombre: string;
-    private telefono: string;
+    private telefono: number;
     private numeroVisitas: number;
     private esVip: boolean;
 
-    constructor(nombre: string, telefono: string) {
+    constructor(nombre: string, telefono: number) {
         this.id = generarIdUnico();
         this.nombre = nombre;
         this.telefono = telefono;
         this.numeroVisitas = 0;
         this.esVip = false;
     }
-
-    // Había hecho este método acá pero considero que es algo que tiene que manejarse desde veterinaria
-    // public incrementarVisitas(): void {
-    //     this.numeroVisitas++;
-    //     if (this.numeroVisitas >= 5) {
-    //       this.esVip = true;
-    //     }
-    //   }
-
-    // GETTERS: 
 
     public getId(): number {
         return this.id;
@@ -33,7 +23,7 @@ export class Cliente {
         return this.nombre;
     }
 
-    public getTelefono(): string {
+    public getTelefono(): number {
         return this.telefono;
     }
 
@@ -50,7 +40,7 @@ export class Cliente {
         this.nombre = nombre;
     }
 
-    public setTelefono(telefono: string): void {
+    public setTelefono(telefono: number): void {
         this.telefono = telefono;
     }
 
